@@ -1,14 +1,6 @@
 {
-  "page1": {
-    "width": "1",
-    "height": "1",
-    "name": "test.png",
-    "link": "https://jktechs.github.io/Build"
-  },
-  "page2": {
-    "width": "2",
-    "weight": "2",
-    "name": "test2.png",
-    "link": "https://jktechs.github.io/Build"
-  }
+  "Width": [1,2],
+  "Height": [1,2],
+  "Name": ["test.png","test1.png"],
+  "link": ["https://jktechs.github.io/Build","https://jktechs.github.io/Build"]
 }
