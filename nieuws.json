@@ -1,6 +1,6 @@
 {
-  "Width": [1,2],
-  "Height": [1,2],
-  "Name": ["test.png","test1.png"],
-  "link": ["https://jktechs.github.io/Build","https://jktechs.github.io/Build"]
+  "Width": [1],
+  "Height": [1],
+  "Name": ["test.png"],
+  "link": ["https://jktechs.github.io/Build"]
 }
