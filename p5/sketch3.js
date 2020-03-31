@@ -2,7 +2,7 @@ let c;
 let d;
 let e = false;
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(1600, 800);
   c = createVector(width/2,height);
   d = createVector(width/2,height/1.2);
 }
