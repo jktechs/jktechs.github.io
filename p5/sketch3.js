@@ -63,11 +63,11 @@ function DrawRay(A,B){
 
 }
 function mouseDragged() {
-  if(mouseY>10)
+  if(mouseY>10 && mouseX<1475-12)
   c = createVector(mouseX,mouseY);
 }
 function mousePressed() {
-  if(mouseY>10)
+  if(mouseY>10 && mouseX<1475-12)
   d = createVector(mouseX,mouseY);
 }
 
