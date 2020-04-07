@@ -1,19 +1,50 @@
 let c;
 let d;
 let e = false;
-let f;
+let f, g, h;
 function setup() {
+  createP('hoogte');
   f = createInput("2");
+  createP('dak hoogte');
+  h = createInput("1");
+  g = createCheckbox('puntdak', false);
+  k = createCheckbox('zadeldak', false);
   createCanvas(1475, 685);
-  c = createVector(width/2,height);
-  d = createVector(width/2,height/1.2);
+  c = createVector(width/2+3,height+3);
+  d = createVector(width/2-3,height/1.2-3);
 }
 function draw() {
   background(220);
   let a = createVector(0,height/2);
   let b = createVector(width,height/2);
   line(a.x,a.y,b.x,b.y);
-  Cube(a,b,c,d);
+  l = Cube(a,b,c,d);
+  if(g.checked()){
+    l1 = DrawRay(l[4],l[6]);
+    l2 = DrawRay(l[7],l[5]);
+    p = l2.cross(l1);
+    p = createVector(p.x,p.y-h.value()*100);
+    line(p.x,p.y,l[4].x,l[4].y);
+    line(p.x,p.y,l[6].x,l[6].y);
+    line(p.x,p.y,l[7].x,l[7].y);
+    line(p.x,p.y,l[5].x,l[5].y);
+  }
+  if(k.checked()){
+    l1 = DrawRay(l[0],l[4]);
+    l2 = DrawRay(l[1],l[7]);
+    l3 = DrawRay(l[2],l[6]);
+    l4 = DrawRay(l[3],l[5]);
+    p = l2.cross(l1);
+    p2 = l4.cross(l3);
+    p = createVector(p.x,p.y-h.value()*100-f.value()*50);
+    l5 = DrawRay(p,b);
+    p2 = createVector(p2.x,p2.x*l5.a+l5.b);
+    line(p.x,p.y,l[4].x,l[4].y);
+    line(p2.x,p2.y,l[6].x,l[6].y);
+    line(p.x,p.y,l[7].x,l[7].y);
+    line(p2.x,p2.y,l[5].x,l[5].y);
+    line(p2.x,p2.y,p.x,p.y);
+  }
 }
 function Cube(A,B,C,D){
   let l1 = Plane(A,B,C,D);
@@ -36,6 +67,7 @@ function Cube(A,B,C,D){
   line(p2.x,p2.y,l1[2].x,l1[2].y);
   line(p3.x,p3.y,l1[3].x,l1[3].y);
   line(p4.x,p4.y,l1[0].x,l1[0].y);
+  return [l1[0],l1[1],l1[2],l1[3],p1,p2,p3,p4];
 }
 function Plane(A,B,C,D){
   let l1 = DrawRay(A,C);
@@ -56,9 +88,9 @@ function DrawRay(A,B){
   let l = new Jitter(A.x,A.y,B.x,B.y);
   let p = createVector((height-l.b)/l.a,height);
   let p2 = createVector(-l.b/l.a,0);
-  //strokeWeight(1);
+  strokeWeight(1);
   //line(p2.x,p2.y,p.x,p.y);
-  //strokeWeight(10);
+  strokeWeight(4);
   return l;
 
 }
