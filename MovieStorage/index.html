@@ -52,9 +52,9 @@
   console.log('Uploaded a raw string!');
 
   // Create a reference from a Google Cloud Storage URI
-  var gsReference = storageRef.refFromURL('gs://moviedata-base.appspot.com/down.png')});
-  gsReference.getDownloadURL().then(function(url) {
-    // `url` is the download URL for 'images/stars.jpg'
+  var pathReference = storage.ref('downt.txt');
+  pathReference.getDownloadURL().then(function(url) {
+    // `url` is the download URL for 'downt.txt'
     console.log(url);
     // This can be downloaded directly:
     //var xhr = new XMLHttpRequest();
