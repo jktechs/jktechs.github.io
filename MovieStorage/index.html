@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>p5.js example</title>
-    <style> body {padding: 0; margin: 0;} </style>
-    <script src="p5.js"></script>
-    <script src="p5.dom.js"></script>
-    <script src="p5.sound.js"></script>
-    <script src="sketch25.js"></script>
-  </head>
-  <body>
-  </body>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Upload Files</title>
+
+</head>
+
+<body>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="files[]" multiple>
+        <input type="submit" value="Upload File" name="submit">
+    </form>
+
+	<script src="upload.js"></script>
+</body>
+
 </html>
