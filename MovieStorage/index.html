@@ -45,21 +45,12 @@
   // Create a child reference
   var jsonRef = storageRef.child('downt.txt');
   // jsonRef now points to 'down.png'
-
-  // Raw string is the default if no format is provided
-  var message = 'This is my message.';
-  jsonRef.putString(message).then(function(snapshot) {
-    console.log('Uploaded a raw string!');
-  });
-  
 </script>
 <button class="btn get" onclick="
 
 var pathReference = storage.ref('downt.txt');
   pathReference.getDownloadURL().then(function(url) {
     // `url` is the download URL for 'downt.txt'
-    console.log(url);
-
     // This can be downloaded directly:
     var xhr = new XMLHttpRequest();
     xhr.responseType = '';
@@ -72,6 +63,16 @@ var pathReference = storage.ref('downt.txt');
   }).catch(function(error) {});
 
 ">Get Data</button>
+
+<button class="btn send" onclick="
+
+// Raw string is the default if no format is provided
+  var message = 'This is my message.';
+  jsonRef.putString(message).then(function(snapshot) {
+    console.log('Uploaded a raw string!');
+  });
+
+">Send Data</button>
 </body>
 
 </html>
