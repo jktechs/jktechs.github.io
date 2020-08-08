@@ -19,11 +19,14 @@
   // Create a storage reference from our storage service
   var storageRef = storage.ref();
 
-  var array = ["textA","textB"];
+  var array = ["textA","textB","textC"];
+  console.log(array);
   var newHTML = [];
   for (var i = 0; i < array.length; i++) {
     newHTML.push('<span>' + array[i] + '</span>');
+	console.log('<span>' + array[i] + '</span>');
   }
+  console.log(newHTML);
   $(".element").html(newHTML.join(""));
 
   function getString(){
