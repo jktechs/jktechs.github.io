@@ -44,6 +44,7 @@
   function sendString(s){
     // Raw string is the default if no format is provided
     var message = 'This is my message.';
+	var jsonRef = storageRef.child('downt.txt');
     jsonRef.putString(s).then(function(snapshot) {
       console.log('Uploaded a raw string!');
     });
