@@ -58,9 +58,10 @@
 
     // This can be downloaded directly:
     var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
+    xhr.responseType = '';
     xhr.onload = function(event) {
       var blob = xhr.response;
+      console.log(url);
     };
     xhr.open('GET', url);
     xhr.send();
