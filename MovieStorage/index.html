@@ -61,7 +61,7 @@
     xhr.responseType = '';
     xhr.onload = function(event) {
       var blob = xhr.response;
-      console.log(url);
+      console.log(blob);
     };
     xhr.open('GET', url);
     xhr.send();
