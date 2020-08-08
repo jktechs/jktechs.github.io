@@ -51,7 +51,11 @@
   jsonRef.putString(message).then(function(snapshot) {
     console.log('Uploaded a raw string!');
   });
-  var pathReference = storage.ref('downt.txt');
+  
+</script>
+<button class="btn get" onclick="
+
+var pathReference = storage.ref('downt.txt');
   pathReference.getDownloadURL().then(function(url) {
     // `url` is the download URL for 'downt.txt'
     console.log(url);
@@ -66,7 +70,8 @@
     xhr.open('GET', url);
     xhr.send();
   }).catch(function(error) {});
-</script>
+
+">Get Data</button>
 </body>
 
 </html>
