@@ -53,8 +53,7 @@
 
   // Create a reference from a Google Cloud Storage URI
   var gsReference = storage.refFromURL('gs://moviedata-base.appspot.com/down.png')});
-  
-  storageRef.child('images/stars.jpg').getDownloadURL().then(function(url) {
+  gsReference.getDownloadURL().then(function(url) {
     // `url` is the download URL for 'images/stars.jpg'
     console.log(url);
     // This can be downloaded directly:
