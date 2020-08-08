@@ -51,22 +51,11 @@
   jsonRef.putString(message).then(function(snapshot) {
   console.log('Uploaded a raw string!');
 
-  // Create a reference from a Google Cloud Storage URI
   var pathReference = storage.ref('downt.txt');
   pathReference.getDownloadURL().then(function(url) {
     // `url` is the download URL for 'downt.txt'
     console.log(url);
-    // This can be downloaded directly:
-    //var xhr = new XMLHttpRequest();
-    //xhr.responseType = 'blob';
-    //xhr.onload = function(event) {
-    //  var blob = xhr.response;
-    //};
-    //xhr.open('GET', url);
-    //xhr.send();
-  }).catch(function(error) {
-    // Handle any errors
-  });
+  }).catch(function(error) {});
 </script>
 </body>
 
