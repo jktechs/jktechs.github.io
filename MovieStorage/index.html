@@ -50,7 +50,7 @@
   var message = 'This is my message.';
   jsonRef.putString(message).then(function(snapshot) {
     console.log('Uploaded a raw string!');
-  }
+  });
   var pathReference = storage.ref('downt.txt');
   pathReference.getDownloadURL().then(function(url) {
     // `url` is the download URL for 'downt.txt'
