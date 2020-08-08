@@ -9,19 +9,16 @@
     appId: "1:668249048227:web:052564296dcc5c3fa9eb16",
     measurementId: "G-YPM8QNYGC3"
   };
+
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
   // Get a reference to the storage service, which is used to create references in your storage bucket
   var storage = firebase.storage();
-
   // Create a storage reference from our storage service
   var storageRef = storage.ref();
 
-  // Create a child reference
-  var jsonRef = storageRef.child('downt.txt');
-  // jsonRef now points to 'down.png'
   function getString(){
     var pathReference = storage.ref('downt.txt');
     pathReference.getDownloadURL().then(function(url) {
