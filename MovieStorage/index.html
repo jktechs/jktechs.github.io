@@ -12,13 +12,13 @@
 
 <body>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
 
-<script>
+    <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyDI1U4PjjT9d--anXP0r4zT4m1P0-dqoc4",
@@ -33,6 +33,16 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+
+  // Get a reference to the storage service, which is used to create references in your storage bucket
+  var storage = firebase.storage();
+
+  // Create a storage reference from our storage service
+  var storageRef = storage.ref();
+
+  // Create a child reference
+  var jsonRef = storageRef.child('down.png');
+  // jsonRef now points to 'down.png'
 </script>
 </body>
 
