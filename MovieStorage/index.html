@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +8,14 @@
     <title>Upload Files</title>
 
 </head>
-
 <body>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
-
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
-
     <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -45,38 +41,30 @@
   // Create a child reference
   var jsonRef = storageRef.child('downt.txt');
   // jsonRef now points to 'down.png'
-  test();
-  function test(){
-    console.log('func');
+  function getString(){
+    var pathReference = storage.ref('downt.txt');
+    pathReference.getDownloadURL().then(function(url) {
+      // `url` is the download URL for 'downt.txt'
+      // This can be downloaded directly:
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = '';
+      xhr.onload = function(event) {
+        var blob = xhr.response;
+        console.log(blob);
+      };
+      xhr.open('GET', url);
+      xhr.send();
+    }).catch(function(error) {});
+  }
+  function sendString(s){
+    // Raw string is the default if no format is provided
+    var message = 'This is my message.';
+    jsonRef.putString(s).then(function(snapshot) {
+      console.log('Uploaded a raw string!');
+    });
   }
 </script>
-<button class="btn get" onclick="
-
-var pathReference = storage.ref('downt.txt');
-  pathReference.getDownloadURL().then(function(url) {
-    // `url` is the download URL for 'downt.txt'
-    // This can be downloaded directly:
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = '';
-    xhr.onload = function(event) {
-      var blob = xhr.response;
-      console.log(blob);
-    };
-    xhr.open('GET', url);
-    xhr.send();
-  }).catch(function(error) {});
-
-">Get Data</button>
-
-<button class="btn send" onclick="
-
-// Raw string is the default if no format is provided
-  var message = 'This is my message.';
-  jsonRef.putString(message).then(function(snapshot) {
-    console.log('Uploaded a raw string!');
-  });
-
-">Send Data</button>
+<button class="btn get" onclick="getString();">Get Data</button>
+<button class="btn send" onclick="sendString('This is my message.');">Send Data</button>
 </body>
-
 </html>
