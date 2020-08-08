@@ -1,27 +1,15 @@
-﻿<!DOCTYPE html>
-<html lang="en-us">
+<!DOCTYPE html>
+<html lang="">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | MovieSorter</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>
-    <script src="Build/UnityLoader.js"></script>
-    <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build.json", {onProgress: UnityProgress});
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js example</title>
+    <style> body {padding: 0; margin: 0;} </style>
+    <script src="p5.js"></script>
+    <script src="p5.dom.js"></script>
+    <script src="p5.sound.js"></script>
+    <script src="sketch3.js"></script>
   </head>
   <body>
-      <div class="webgl-content">
-          <div id="unityContainer" style="width: 960px; height: 600px"></div>
-          <div class="footer">
-              <div class="webgl-logo"></div>
-              <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-              <div class="title">MovieSorter</div>
-          </div>
-      </div>
-      <div style="border:solid 1px black; width 200px; height 30px; margin: auto; text-align: center" onclick="unityInstance.SendMessage('Data','Save')">Save</div>
-      <div style="border:solid 1px black; width 200px; height 30px; margin: auto; text-align: center" onclick="unityInstance.SendMessage('Data','LoadJson','{names:[d()d],companys:[d],VHS:[true],years:[1],secuals:[1]}')">Load</div>
   </body>
 </html>
