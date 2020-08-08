@@ -19,6 +19,13 @@
   // Create a storage reference from our storage service
   var storageRef = storage.ref();
 
+  var array = ["textA","textB"];
+  var newHTML = [];
+  for (var i = 0; i < array.length; i++) {
+    newHTML.push('<span>' + array[i] + '</span>');
+  }
+  $(".element").html(newHTML.join(""));
+
   function getString(){
     var pathReference = storage.ref('downt.txt');
     pathReference.getDownloadURL().then(function(url) {
