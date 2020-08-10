@@ -23,8 +23,8 @@
   console.log(array);
   var newHTML = [];
   for (var i = 0; i < array.length; i++) {
-    newHTML.push('<span>' + array[i] + '</span>');
-	console.log('<span>' + array[i] + '</span>');
+    newHTML.push('<p>' + array[i] + '</p>');
+	console.log('<p>' + array[i] + '</p>');
   }
   console.log(newHTML.join(""));
   $(".element").html(newHTML.join(""));
