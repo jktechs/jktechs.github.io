@@ -20,7 +20,7 @@
   var storageRef = storage.ref();
 
   $(document).ready(function(){
-    var array = [" the bee movie"," the lego movie"," some ather movie"];
+    var array = ["   the bee movie","   the lego movie","   some ather movie"];
     var newHTML = [];
     for (var i = 0; i < array.length; i++) {
       newHTML.push('<p class="item">' + array[i] + '</p>');
