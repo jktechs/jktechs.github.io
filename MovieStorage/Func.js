@@ -21,13 +21,12 @@
 
   $(document).ready(function(){
     var array = ["the bee movie","the lego movie","some ather movie"];
-    console.log(array);
     var newHTML = [];
     for (var i = 0; i < array.length; i++) {
       newHTML.push('<p>' + array[i] + '</p>');
     }
-    console.log(newHTML.join(""));
-    $("#start").append(newHTML.join(""));
+	$(newHTML.join("")).insertAfter("#container");
+    //$("#start").append(newHTML.join(""));
   });
 
   function getString(){
