@@ -19,16 +19,18 @@
   // Create a storage reference from our storage service
   var storageRef = storage.ref();
 
-  var array = ["textA","textB","textC"];
-  console.log(array);
-  var newHTML = [];
-  for (var i = 0; i < array.length; i++) {
-    newHTML.push('<p>' + array[i] + '</p>');
-	console.log('<p>' + array[i] + '</p>');
-  }
-  console.log(newHTML.join(""));
-  $("p").append("<b>this is b</b>");
-  $("p").append(newHTML.join(""));
+  jQuery(document).ready(function(){
+    var array = ["textA","textB","textC"];
+    console.log(array);
+    var newHTML = [];
+    for (var i = 0; i < array.length; i++) {
+      newHTML.push('<p>' + array[i] + '</p>');
+	  console.log('<p>' + array[i] + '</p>');
+    }
+    console.log(newHTML.join(""));
+    $("p").append("<b>this is b</b>");
+    $("p").append(newHTML.join(""));
+  });
 
   function getString(){
     var pathReference = storage.ref('downt.txt');
