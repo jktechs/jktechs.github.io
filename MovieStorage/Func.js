@@ -19,7 +19,7 @@
   // Create a storage reference from our storage service
   var storageRef = storage.ref();
 
-  jQuery(document).ready(function(){
+  $(document).ready(function(){
     var array = ["textA","textB","textC"];
     console.log(array);
     var newHTML = [];
