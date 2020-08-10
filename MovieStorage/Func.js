@@ -26,7 +26,7 @@
     newHTML.push('<span>' + array[i] + '</span>');
 	console.log('<span>' + array[i] + '</span>');
   }
-  console.log(newHTML);
+  console.log(newHTML.join(""));
   $(".element").html(newHTML.join(""));
 
   function getString(){
