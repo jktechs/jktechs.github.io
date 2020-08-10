@@ -25,8 +25,7 @@
     for (var i = 0; i < array.length; i++) {
       newHTML.push('<p>' + array[i] + '</p>');
     }
-	$(newHTML.join("")).insertAfter("#container");
-    //$("#start").append(newHTML.join(""));
+    $("#con").append(newHTML.join(""));
   });
 
   function getString(){
