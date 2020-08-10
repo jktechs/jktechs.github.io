@@ -27,7 +27,8 @@
 	console.log('<p>' + array[i] + '</p>');
   }
   console.log(newHTML.join(""));
-  $("div").append(newHTML.join(""));
+  $("p").append("<b>this is b</b>");
+  $("p").append(newHTML.join(""));
 
   function getString(){
     var pathReference = storage.ref('downt.txt');
