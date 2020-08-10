@@ -27,11 +27,7 @@
 	console.log('<p>' + array[i] + '</p>');
   }
   console.log(newHTML.join(""));
-  $(".element").html(newHTML.join(""));
-
-  // <div id="one">one</div>
-  var d1 = document.getElementById('one');
-  d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
+  $("div").append(newHTML.join(""));
 
   function getString(){
     var pathReference = storage.ref('downt.txt');
