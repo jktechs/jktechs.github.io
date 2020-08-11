@@ -23,12 +23,12 @@
     var array = ["   the bee movie","   the lego movie","   some ather movie"];
     var newHTML = [];
     for (var i = 0; i < array.length; i++) {
-      newHTML.push('<p class="item" onclick=alertB();">' + array[i] + '</p>');
+      newHTML.push('<p class="item" onclick=selectId(i);">' + array[i] + '</p>');
     }
     $("#con").append(newHTML.join(""));
   });
-  function alertB(){
-    alert('alert');
+  function selectId(a){
+    alert('alert' + a);
   }
   function getString(){
     var pathReference = storage.ref('downt.txt');
