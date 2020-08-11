@@ -30,8 +30,10 @@
     getString();
   });
   function updateList(){
+    obj.movies.sort(function(a, b) {
+      return ((a.name < b.name) ? -1 : ((a.name == b.name) ? 0 : 1));
+    });
     $('.item').remove();
-
 	var list = [];
 	for (var i = 0; i < obj.movies.length; i++) {
 	  var add = true;
