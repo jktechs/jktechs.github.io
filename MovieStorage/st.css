@@ -23,3 +23,6 @@ body {
     overflow: auto;
     height: 200px;
 }
+.item:focus {
+    background: olive;
+}

@@ -18,17 +18,24 @@
   var storage = firebase.storage();
   // Create a storage reference from our storage service
   var storageRef = storage.ref();
+  //color selected id
+  var style = document.createElement('style');
+  document.head.appendChild(style);
 
+  var array = ["   the bee movie","   the lego movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie",
+	"   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie"];
   $(document).ready(function(){
-    var array = ["   the bee movie","   the lego movie","   some ather movie"];
+    
     var newHTML = [];
     for (var i = 0; i < array.length; i++) {
-      newHTML.push('<p class="item" onclick="selectId('+i+');">' + array[i] + '</p>');
+      newHTML.push('<p class="item" id="num'+i+'" onclick="selectId('+i+');">' + array[i] + '</p>');
     }
     $("#con").append(newHTML.join(""));
   });
   function selectId(a){
-    alert('alert' + a);
+    style.innerHTML = '#num'+a+'{background-color: #f0f0f0;}';
+	document.getElementById("name").innerHTML = "Name: "+array[a];
+	document.getElementById("lang").innerHTML = "Lang: "+array[a];
   }
   function getString(){
     var pathReference = storage.ref('downt.txt');
