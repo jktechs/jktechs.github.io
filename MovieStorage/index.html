@@ -29,6 +29,8 @@
         <a class="data">Name:</a><input id="name">
         <a class="data">Lang:</a><input id="lang">
         <a class="data">dvd:</a><input id="dvd" type="checkbox">
+        <a class="data">Company:</a><input id="comp">
+        <a class="data">Part:</a><input id="part" type="number">
         <a class="btn" onclick="changeE();">Change</a>
         <a class="btn" onclick="addE();">Add</a>
         <a class="btn" onclick="remE();">Remove</a>
@@ -43,6 +45,13 @@
         <input id="enDvd" type="checkbox" onchange="updateList();">
         <a class="data">dvd:</a>
         <input id="sortDvd" type="checkbox" onchange="updateList();">
+
+        <input id="enComp" type="checkbox" onchange="updateList();">
+        <a class="data">Company:</a>
+        <input id="sortComp" onchange="updateList();">
+        <input id="enPart" type="checkbox" onchange="updateList();">
+        <a class="data">Part:</a>
+        <input id="sortPart" type="number" onchange="updateList();">
     </div>
 </body>
 </html>

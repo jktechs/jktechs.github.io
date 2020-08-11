@@ -23,8 +23,6 @@
   document.head.appendChild(style);
 
   var id = -1;
-
-  var dvdAr = [];
   var obj;
   $(document).ready(function(){
     getString();
@@ -37,12 +35,22 @@
 	var list = [];
 	for (var i = 0; i < obj.movies.length; i++) {
 	  var add = true;
-	  console.log( obj.movies[i]);
 	  //#enName
 	  if(document.getElementById("enName").checked){
 	    if(!obj.movies[i].name.includes(document.getElementById("sortName").value)){
 		  add = false;
-		  console.log("noName");
+		}
+	  }
+	  //#enCompany
+	  if(document.getElementById("enComp").checked){
+	    if(!obj.movies[i].comp.includes(document.getElementById("sortComp").value)){
+		  add = false;
+		}
+	  }
+	  //#enCompany
+	  if(document.getElementById("enPart").checked){
+	    if(obj.movies[i].part != document.getElementById("sortPart").value){
+		  add = false;
 		}
 	  }
 	  //#enLang
@@ -55,14 +63,12 @@
         }
 		if(!containsObj){
 		  add = false;
-		  console.log(obj.movies[i].lang[j]);
 		}
 	  }
 	  //#enDvd
 	  if(document.getElementById("enDvd").checked){
 	    if(obj.movies[i].dvd != document.getElementById("sortDvd").checked){
 		  add = false;
-		  console.log("noDvd");
 		}
 	  }
 	  if(add)
@@ -84,11 +90,13 @@
       obj.movies[id].name = document.getElementById("name").value;
 	  obj.movies[id].lang = document.getElementById("lang").value.split(",");
 	  obj.movies[id].dvd = document.getElementById("dvd").checked;
+	  obj.movies[id].comp = document.getElementById("comp").value;
+	  obj.movies[id].part = document.getElementById("part").value;
 	}
     updateList();
   }
   function addE(){
-    var nb = {"name":document.getElementById("name").value,"lang":document.getElementById("lang").value.split(","),"dvd":document.getElementById("dvd").checked};
+    var nb = {"name":document.getElementById("name").value,"lang":document.getElementById("lang").value.split(","),"dvd":document.getElementById("dvd").checked,"comp":document.getElementById("comp").value,"part":document.getElementById("part").value};
 	obj.movies.push(nb);
 	updateList();
   }
@@ -101,6 +109,8 @@
 	document.getElementById("name").value = obj.movies[a].name;
 	document.getElementById("lang").value = obj.movies[a].lang.join();
 	document.getElementById("dvd").checked = obj.movies[a].dvd;
+	document.getElementById("part").value = obj.movies[a].part;
+	document.getElementById("comp").value = obj.movies[a].comp;
 	id = a;
   }
   function getString(){
@@ -113,8 +123,6 @@
       xhr.onload = function(event) {
         var blob = xhr.response;
 		obj = JSON.parse(blob);
-		console.log("set");
-		console.log(obj);
 		updateList();
       };
       xhr.open('GET', url);
