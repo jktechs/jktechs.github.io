@@ -27,6 +27,7 @@ body {
     height: 200px;
     background-color: #f0f0ff;
     border: 1px solid black;
+    resize: vertical;
 }
 .item:focus {
     background: olive;
@@ -62,6 +63,8 @@ body {
 #datas {
     padding-top: 5px;
 }
-#vz{
-    width:40px;
+#sort {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
 }

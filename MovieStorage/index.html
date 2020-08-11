@@ -26,11 +26,23 @@
 
     </div>
     <div id="datas">
-        <a class="data">Name:</a><input id="vz"><input id="name">
+        <a class="data">Name:</a><input id="name">
         <a class="data">Lang:</a><input id="lang">
+        <a class="data">dvd:</a><input id="dvd" type="checkbox">
         <a class="btn" onclick="changeE();">Change</a>
         <a class="btn" onclick="addE();">Add</a>
         <a class="btn" onclick="remE();">Remove</a>
+    </div>
+    <div id="sort">
+        <input id="enName" type="checkbox" onchange="updateList();">
+        <a class="data">Name:</a>
+        <input id="sortName" onchange="updateList();">
+        <input id="enLang" type="checkbox" onchange="updateList();">
+        <a class="data">Lang:</a>
+        <input id="sortLang" onchange="updateList();">
+        <input id="enDvd" type="checkbox" onchange="updateList();">
+        <a class="data">dvd:</a>
+        <input id="sortDvd" type="checkbox" onchange="updateList();">
     </div>
 </body>
 </html>

@@ -24,46 +24,81 @@
 
   var id = -1;
 
-  var nameAr = [];
-  var langAr = [];
-  var vzAr = [];
   var dvdAr = [];
+  var obj;
   $(document).ready(function(){
-    updateList();
+    getString();
   });
   function updateList(){
     $('.item').remove();
+
+	var list = [];
+	for (var i = 0; i < obj.movies.length; i++) {
+	  var add = true;
+	  console.log( obj.movies[i]);
+	  //#enName
+	  if(document.getElementById("enName").checked){
+	    if(!obj.movies[i].name.includes(document.getElementById("sortName").value)){
+		  add = false;
+		  console.log("noName");
+		}
+	  }
+	  //#enLang
+	  if(document.getElementById("enLang").checked){
+	    var containsObj = false;
+	    for (var j = 0; j < obj.movies[i].lang.length; j++) {
+		  if(obj.movies[i].lang[j].includes(document.getElementById("sortLang").value)){
+		    containsObj |= true;
+		  }
+        }
+		if(!containsObj){
+		  add = false;
+		  console.log(obj.movies[i].lang[j]);
+		}
+	  }
+	  //#enDvd
+	  if(document.getElementById("enDvd").checked){
+	    if(obj.movies[i].dvd != document.getElementById("sortDvd").checked){
+		  add = false;
+		  console.log("noDvd");
+		}
+	  }
+	  if(add)
+	    list.push(obj.movies[i]);
+    }
+
+
 	var newHTML = [];
-    for (var i = 0; i < nameAr.length; i++) {
-      newHTML.push('<p class="item" id="num'+i+'" onclick="selectId('+i+');">' + vzAr[i] + " " + nameAr[i] + '</p>');
+    for (var i = 0; i < list.length; i++) {
+      var nam = list[i].name;
+	  if(nam.includes("<") || nam.includes(">"))
+		nam = "";
+      newHTML.push('<p class="item" id="num'+i+'" onclick="selectId('+i+');">' + nam + '</p>');
     }
     $("#con").append(newHTML.join(""));
   }
   function changeE(){
     if(id != -1){
-      nameAr[id] = document.getElementById("name").value;
-	  langAr[id] = document.getElementById("lang").value.split(",");
-	  vzAr[id] = document.getElementById("vz").value;
+      obj.movies[id].name = document.getElementById("name").value;
+	  obj.movies[id].lang = document.getElementById("lang").value.split(",");
+	  obj.movies[id].dvd = document.getElementById("dvd").checked;
 	}
     updateList();
   }
   function addE(){
-	nameAr.push(document.getElementById("name").value);
-	langAr.push(document.getElementById("lang").value.split(","));
-	vzAr.push(document.getElementById("vz").value);
+    var nb = {"name":document.getElementById("name").value,"lang":document.getElementById("lang").value.split(","),"dvd":document.getElementById("dvd").checked};
+	obj.movies.push(nb);
 	updateList();
   }
   function remE(){
-  	  nameAr.splice(id, 1);
-	  langAr.splice(id, 1);
-	  vzAr.splice(id, 1);
+  	  obj.movies.splice(id, 1);
 	  updateList();
   }
   function selectId(a){
     style.innerHTML = '#num'+a+'{background-color: #f0f0f0;}';
-	document.getElementById("name").value = nameAr[a];
-	document.getElementById("lang").value = langAr[a].join();
-	document.getElementById("vz").value = vzAr[a];
+	document.getElementById("name").value = obj.movies[a].name;
+	document.getElementById("lang").value = obj.movies[a].lang.join();
+	document.getElementById("dvd").checked = obj.movies[a].dvd;
 	id = a;
   }
   function getString(){
@@ -75,11 +110,9 @@
       xhr.responseType = '';
       xhr.onload = function(event) {
         var blob = xhr.response;
-		var obj = JSON.parse(blob); 
-		nameAr = obj.names;
-		langAr = obj.lang;
-		vzAr = obj.vz;
-		dvdAr = obj.dvd;
+		obj = JSON.parse(blob);
+		console.log("set");
+		console.log(obj);
 		updateList();
       };
       xhr.open('GET', url);
@@ -87,8 +120,6 @@
     }).catch(function(error) {});
   }
   function sendString(){
-    var obj = {"names":nameAr,"dvd":dvdAr,"lang":langAr,"vz":vzAr};
-	//console.log(obj);
     // Raw string is the default if no format is provided
     var message =  JSON.stringify(obj);
 	var jsonRef = storageRef.child('movies.json');
