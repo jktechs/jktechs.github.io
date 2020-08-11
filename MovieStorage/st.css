@@ -1,18 +1,25 @@
 body {
-    background-color: lightblue;
+    background-color: white;
 }
 
 .item {
-    background-color: white;
-    color: black;
-    border-radius: 0px 10px 10px 0px;
-    border: 7px groove #0CA600;
-    border-radius: 40px 0px 0px 40px;
-    font-family: "Arial Black", Gadget, sans-serif;
-    font-size: 20px;
-    font-weight: 400;
+    background-color: #fffff0;
+    border: 1px solid black;
     margin-top: 0px;
     margin-bottom: 0px;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+    .item:hover {
+        background-color: #ffffff;
+    }
+
+    .item:active {
+        background-color: #f0f0ff;
+    }
+
+#con {
+    overflow: auto;
+    height: 200px;
 }
