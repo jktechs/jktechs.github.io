@@ -22,41 +22,77 @@
   var style = document.createElement('style');
   document.head.appendChild(style);
 
-  var array = ["   the bee movie","   the lego movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie",
-	"   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie","   some ather movie"];
+  var id = -1;
+
+  var nameAr = [];
+  var langAr = [];
+  var vzAr = [];
+  var dvdAr = [];
   $(document).ready(function(){
-    
-    var newHTML = [];
-    for (var i = 0; i < array.length; i++) {
-      newHTML.push('<p class="item" id="num'+i+'" onclick="selectId('+i+');">' + array[i] + '</p>');
+    updateList();
+  });
+  function updateList(){
+    $('.item').remove();
+	var newHTML = [];
+    for (var i = 0; i < nameAr.length; i++) {
+      newHTML.push('<p class="item" id="num'+i+'" onclick="selectId('+i+');">' + vzAr[i] + " " + nameAr[i] + '</p>');
     }
     $("#con").append(newHTML.join(""));
-  });
+  }
+  function changeE(){
+    if(id != -1){
+      nameAr[id] = document.getElementById("name").value;
+	  langAr[id] = document.getElementById("lang").value.split(",");
+	  vzAr[id] = document.getElementById("vz").value;
+	}
+    updateList();
+  }
+  function addE(){
+	nameAr.push(document.getElementById("name").value);
+	langAr.push(document.getElementById("lang").value.split(","));
+	vzAr.push(document.getElementById("vz").value);
+	updateList();
+  }
+  function remE(){
+  	  nameAr.splice(id, 1);
+	  langAr.splice(id, 1);
+	  vzAr.splice(id, 1);
+	  updateList();
+  }
   function selectId(a){
     style.innerHTML = '#num'+a+'{background-color: #f0f0f0;}';
-	document.getElementById("name").innerHTML = "Name: "+array[a];
-	document.getElementById("lang").innerHTML = "Lang: "+array[a];
+	document.getElementById("name").value = nameAr[a];
+	document.getElementById("lang").value = langAr[a].join();
+	document.getElementById("vz").value = vzAr[a];
+	id = a;
   }
   function getString(){
-    var pathReference = storage.ref('downt.txt');
+    var pathReference = storage.ref('movies.json');
     pathReference.getDownloadURL().then(function(url) {
-      // `url` is the download URL for 'downt.txt'
+      // `url` is the download URL for 'movies.json'
       // This can be downloaded directly:
       var xhr = new XMLHttpRequest();
       xhr.responseType = '';
       xhr.onload = function(event) {
         var blob = xhr.response;
-        console.log(blob);
+		var obj = JSON.parse(blob); 
+		nameAr = obj.names;
+		langAr = obj.lang;
+		vzAr = obj.vz;
+		dvdAr = obj.dvd;
+		updateList();
       };
       xhr.open('GET', url);
       xhr.send();
     }).catch(function(error) {});
   }
-  function sendString(s){
+  function sendString(){
+    var obj = {"names":nameAr,"dvd":dvdAr,"lang":langAr,"vz":vzAr};
+	//console.log(obj);
     // Raw string is the default if no format is provided
-    var message = 'This is my message.';
-	var jsonRef = storageRef.child('downt.txt');
-    jsonRef.putString(s).then(function(snapshot) {
-      console.log('Uploaded a raw string!');
-    });
+    var message =  JSON.stringify(obj);
+	var jsonRef = storageRef.child('movies.json');
+    jsonRef.putString(message);//.then(function(snapshot) {
+      //console.log('Uploaded a raw string!');
+    //});
   }

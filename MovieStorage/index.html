@@ -18,14 +18,19 @@
 </head>
 <body>
     <div id="buttons">
-    <p class="btn get" onclick="getString();">Get Data</p>
-    <p class="btn send" onclick="sendString('This is my message.');">Send Data</p>
+    <a class="btn" onclick="getString();">Get Data</a>
+    <a class="btn" onclick="sendString();">Send Data</a>
     </div>
     <p id="start">Movies:</p>
     <div id="con">
 
     </div>
-    <p id="name">Name:</p>
-    <p id="lang">Lang:</p>
+    <div id="datas">
+        <a class="data">Name:</a><input id="vz"><input id="name">
+        <a class="data">Lang:</a><input id="lang">
+        <a class="btn" onclick="changeE();">Change</a>
+        <a class="btn" onclick="addE();">Add</a>
+        <a class="btn" onclick="remE();">Remove</a>
+    </div>
 </body>
 </html>

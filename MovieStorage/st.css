@@ -1,5 +1,8 @@
 body {
     background-color: white;
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial Black,Arial Bold,Gadget,sans-serif;
 }
 
 .item {
@@ -22,7 +25,43 @@ body {
 #con {
     overflow: auto;
     height: 200px;
+    background-color: #f0f0ff;
+    border: 1px solid black;
 }
 .item:focus {
     background: olive;
+}
+#buttons {
+    height: 20px;
+    line-height: 20px;
+    background: wheat;
+    padding-left:5px;
+    padding-bottom:5px;
+}
+.btn {
+    background: Cornsilk;
+    padding: 0px;
+    margin: 0px;
+    padding-top: 5px;
+    padding-bottom: 6px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+#start {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin:0px;
+}
+.data {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin:0px;
+}
+#datas {
+    padding-top: 5px;
+}
+#vz{
+    width:40px;
 }
