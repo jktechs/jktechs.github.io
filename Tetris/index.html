@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="Func.js"></script>
+	<link rel="stylesheet" href="st.css">
+	<title>Tetris</title>
+
+</head>
+<body>
+    <canvas id="myCanvas" width="209" height="419" style="border:1px solid #d3d3d3;">No HTML5 canvas.</canvas>
+    <script>
+        var cellSize = 20;
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var peaces = [
+            [//L1
+                [//normal
+                    [-1, -1], [-1, 0], [0, 0], [1, 0]
+                ], [//90
+                    [1, -1], [0, -1], [0, 0], [0, 1]
+                ], [//180
+                    [-1, 0], [0, 0], [1, 0], [1, 1]
+                ], [//270
+                    [0, -1], [0, 0], [0, 1], [1, -1]
+                ]
+            ], [//L2
+                [//normal
+                    []
+                ], [//90
+
+                ], [//180
+
+                ], [//270
+
+                ]
+            ], [//T
+                [//normal
+
+                ], [//90
+
+                ], [//180
+
+                ], [//270
+
+                ]
+            ], [//I
+                [//normal
+
+                ], [//90
+
+                ], [//180
+
+                ], [//270
+
+                ]
+            ], [//O
+                [//normal
+
+                ], [//90
+
+                ], [//180
+
+                ], [//270
+
+                ]
+            ], [//Z1
+                [//normal
+
+                ], [//90
+
+                ], [//180
+
+                ], [//270
+
+                ]
+            ], [//Z2
+                [//normal
+
+                ], [//90
+
+                ], [//180
+
+                ], [//270
+
+                ]
+            ]
+        ];
+        var bord = new Array(10);
+        for (var i = 0; i < 10; i++) {
+            bord[i] = Array(20);
+            for (var j = 0; j < 20; j++) {
+                bord[i][j] = 0;
+            }
+        }
+        var x = 3;
+        var y = 3;
+
+        function run() {
+            for (var i = 0; i < 10; i++) {
+                for (var j = 0; j < 20; j++) {
+                    if (bord[i][j] == 0)
+                        ctx.fillStyle = "#F0F0F0";
+                    if (bord[i][j] == 1)
+                        ctx.fillStyle = "#FF0000";
+                    ctx.fillRect(i * (cellSize + 1), j * (cellSize + 1), cellSize, cellSize);
+                }
+            }
+            ctx.fillStyle = "#FF0000";
+            var points = peaces[1][0]//L1 normal
+            for (var i = 0; i < 4; i++) {
+                ctx.fillRect((x + points[i][0]) * (cellSize + 1), (y + points[i][1]) * (cellSize + 1), cellSize, cellSize);
+            }
+
+            y++;
+        }
+
+
+        setInterval(run,500);
+
+        
+    </script>
+</body>
+</html>
