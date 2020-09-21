@@ -47,18 +47,25 @@
             }
             ctx.fillStyle = "#FF0000";
             var points = peaces[3][d]//L1 normal
-            for (var i = 0; i < 4; i++) {
-                if (bord[x + points[i][0]][y + points[i][1]] != 0) {
-
-                }
+            for (var i = 0; i < 4; i++) {//render
                 ctx.fillRect((x + points[i][0]) * (cellSize + 1), (y + points[i][1]) * (cellSize + 1), cellSize, cellSize);
             }
+            for (var i = 0; i < 4; i++) {//check collision
+                if (x+points[i][0] < 0 || y+points[i][1]+1 < 0 || x+points[i][0] > 10 || y+points[i][1]+1 > 20 || bord[x + points[i][0]][y + points[i][1]+1] != 0) {
+                    for (var j = 0; j < 4; j++) {//draw block
+                        bord[points[j][0] + x][points[j][1] + y] = 1;
+                    }
+                    x = 3;//reset
+                    y = 3;
+                    d = (d+1)%4;
+                    break;
+                }
+            }
             y++;
-            d = (d+1)%4;
         }
 
 
-        setInterval(run,500);
+        setInterval(run,300);
 
         
     </script>
