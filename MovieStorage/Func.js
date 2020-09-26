@@ -81,7 +81,7 @@
       var nam = list[i].name;
 	  if(nam.includes("<") || nam.includes(">"))
 		nam = "";
-      newHTML.push('<p class="item" id="num'+i+'" onclick="selectId('+i+');">' + nam + '</p>');
+      newHTML.push('<p class="item" id="num'+i+'" onclick="selectId('+i+');">' + i.toString() + ' ' + nam + '</p>');
     }
     $("#con").append(newHTML.join(""));
   }
