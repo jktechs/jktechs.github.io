@@ -15,6 +15,18 @@
         var cellSize = 20;
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
+
+c.addEventListener("keydown", (event) => {
+    // handle keydown
+});
+
+c.addEventListener("keypress", (event) => {
+    Console.log(event.key);
+});
+
+c.addEventListener("keyup", (event) => {
+    // handle keyup
+});
         var peaces = [
             [/*L1*/[/*normal*/[-1, -1], [-1, 0], [0, 0], [1, 0]], [/*90*/[1, -1], [0, -1], [0, 0], [0, 1]], [/*180*/[-1, 0], [0, 0], [1, 0], [1, 1]], [/* 270*/[0, -1], [0, 0], [0, 1], [-1, 1]]],
             [/*L2*/[/*normal*/[1, -1], [1, 0], [0, 0], [-1, 0]], [/* 90*/[1, 1], [0, 1], [0, 0], [0, -1]], [/* 180*/[1, 0], [0, 0], [-1, 0], [-1, 1]], [/*270*/[0, 1], [0, 0], [0, -1], [-1, -1]]],
