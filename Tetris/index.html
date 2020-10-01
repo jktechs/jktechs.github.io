@@ -34,6 +34,7 @@
         var x = 3;
         var y = 3;
         var d = 0;
+	var p = 0;
 
         function run() {
             for (var i = 0; i < 10; i++) {
@@ -46,7 +47,7 @@
                 }
             }
             ctx.fillStyle = "#FF0000";
-            var points = peaces[0][d]//L1 normal
+            var points = peaces[p][d]//L1 normal
             for (var i = 0; i < 4; i++) {//render
                 ctx.fillRect((x + points[i][0]) * (cellSize + 1), (y + points[i][1]) * (cellSize + 1), cellSize, cellSize);
             }
@@ -58,6 +59,7 @@
                     x = 3;//reset
                     y = 3;
                     d = (d+1)%4;
+		p = (p+1)%7;
                     break;
                 }
             }
