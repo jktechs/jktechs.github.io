@@ -21,7 +21,9 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("keypress", (event) => {
-    Console.log(event.key);
+	if(event.key == "a")
+		console.log("this is a")
+    console.log(event.key);
 });
 
 document.addEventListener("keyup", (event) => {
