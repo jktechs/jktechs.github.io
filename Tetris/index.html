@@ -16,18 +16,9 @@
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
 
-document.addEventListener("keydown", (event) => {
-    // handle keydown
-});
-
 document.addEventListener("keypress", (event) => {
-	if(event.key == "a")
-		console.log("this is a")
-    console.log(event.key);
-});
-
-document.addEventListener("keyup", (event) => {
-    // handle keyup
+	if(event.key == "a")x++;
+	if(event.key == "d")x--;
 });
         var peaces = [
             [/*L1*/[/*normal*/[-1, -1], [-1, 0], [0, 0], [1, 0]], [/*90*/[1, -1], [0, -1], [0, 0], [0, 1]], [/*180*/[-1, 0], [0, 0], [1, 0], [1, 1]], [/* 270*/[0, -1], [0, 0], [0, 1], [-1, 1]]],
