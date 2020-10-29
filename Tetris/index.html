@@ -17,8 +17,10 @@
         var ctx = c.getContext("2d");
 
 document.addEventListener("keypress", (event) => {
-	if(event.key == "a")x++;
-	if(event.key == "d")x--;
+	if(event.key == "d")x++;
+	if(event.key == "a")x--;
+	if(event.key == "q")d=(d+1)%4;
+	if(event.key == "e")d=(d-1)%4;
 });
         var peaces = [
             [/*L1*/[/*normal*/[-1, -1], [-1, 0], [0, 0], [1, 0]], [/*90*/[1, -1], [0, -1], [0, 0], [0, 1]], [/*180*/[-1, 0], [0, 0], [1, 0], [1, 1]], [/* 270*/[0, -1], [0, 0], [0, 1], [-1, 1]]],
