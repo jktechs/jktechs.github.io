@@ -7,20 +7,17 @@
     <!-- <script src="Func.js"></script> -->
     <!--<link rel="stylesheet" href="st.css"> -->
     <title>Sint jan</title>  
-	<script>
-		document.addEventListener('touchstart', this.touchstart);
-		document.addEventListener('touchmove', this.touchmove);
-
-		function touchstart(e) {
-			e.preventDefault()
-		}
-
-		function touchmove(e) {
-			e.preventDefault()
-		}
-	</script>
 </head>
 <style>
+html,
+body {
+  overflow-x: hidden;
+  height: 100%;
+}
+
+body {
+  position: relative;
+}
 .icon {
   filter: invert(20%) sepia(89%) saturate(5906%) hue-rotate(356deg) brightness(96%) contrast(118%);
 }
