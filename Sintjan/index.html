@@ -40,6 +40,9 @@
 			bottom: 0px;
 			background-color: #00ff00
 		}
+		#date {
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
@@ -56,6 +59,16 @@
 		$(function() {
 			window.onresize();
 		});
+		var today = new Date();
+		var dd = String(today.getDate()).padStart(2, '0');
+		var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+		var yyyy = today.getFullYear();
+
+		today = mm + '/' + dd + '/' + yyyy;
+		var node = document.createElement("p");
+		node.innerHTML  = today
+		node.setAttribute("id", "date");
+		document.getElementsByTagName("BODY")[0].appendChild(node);
   </script>
 	<div id="bar">
 		<img class="icon" src="open-iconic/svg/cog.svg"><img class="icon" src="open-iconic/svg/home.svg">
