@@ -9,40 +9,50 @@
     <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- <script src="Func.js"></script> -->
     <!--<link rel="stylesheet" href="st.css"> -->
-    <title>Sint jan</title>  
+    <title>Sint jan</title>
 	<style>
-		html, body {
-			margin: 0; 
-			padding: 0; 
-			overflow: hidden
-		}
-		html, body {
-			overflow-x: hidden;
-			height: 100%;
-		}
-		body {
-			position: relative;
-		}
 		.icon {
 			filter: invert(20%) sepia(89%) saturate(5906%) hue-rotate(356deg) brightness(96%) contrast(118%);
-		}
-		.icon {
 			margin-left:  calc(25vw - 5vh);
 			margin-right: calc(25vw - 5vh);
 			width: 10vh;
 			height: 10vh;
 		}
-		.icon:hover {
-			background-color: yellow;
-		}
-		#bar {
-			position: absolute;
-			bottom: 0px;
-			background-color: #00ff00
-		}
 		#date {
 			text-align: center;
 		}
+		body {margin:0;}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
 	</style>
 </head>
 <body>
