@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+$html = file_get_html('http://www.google.com/');
+echo $html
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
