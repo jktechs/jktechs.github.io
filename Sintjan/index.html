@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>function curday(sp, off){
+today = new Date();
+today.setDate(today.getDate() + off);
+var dd = today.getDate();
+var mm = today.getMonth()+1;
+var yyyy = today.getFullYear();
+
+if(dd<10) dd='0'+dd;
+if(mm<10) mm='0'+mm;
+return (mm+sp+dd+sp+yyyy);
+};</script>
 <style>
 body {margin:0}
 
@@ -26,29 +37,45 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
+.active, .active:hover{
+  background-color: #4CAF50;
+}
 li a:hover:not(.active) {
   background-color: #111;
-}
-
-.active {
-  background-color: #4CAF50;
 }
 .block{
   background-color: #4CACFF;
   margin: 0px;
   padding: 10px;
+  text-align: center;
+}
+a{
+text-decoration:none;
+  font-weight: bold;
 }
 </style>
+
+<meta charset="UTF-8">
+
 </head>
 <body>
-<ul>
-  <li><a class="active" href="#home">Huiswerk</a></li>
-  <li><a href="#news">Rooster</a></li>
-  <li><a href="#contact">Instellingen</a></li>
-  <li><a href="#about">Over</a></li>
+<ul id="menubar">
+  <li><a href="?page=0">Huiswerk</a></li>
+  <li><a href="?page=1">Rooster</a></li>
+  <li><a href="?page=2">Instellingen</a></li>
+  <li><a href="?page=3">Over</a></li>
 </ul>
-  <p class="block">Vandaag: </p>
+  <p class="block" id="header">Vandaag: </p>
+<script>
+let pag = new URLSearchParams(window.location.search).get('page');
+if(!pag)
+pag = 0;
+let day = new URLSearchParams(window.location.search).get('day');
+if(!day)
+day = 0;
+document.getElementById("menubar").children[pag].children[0].className = "active";
+if(pag == 0){document.getElementById("header").innerText = "Huiswerk"} else {document.getElementById("header").innerHTML = "<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"}
+</script>
 <div style="padding:20px;background-color:#f0f0ff;height:600px;">
   <p>Some text some text some text some text..</p>
   <p>Some text some text some text some text..</p>
