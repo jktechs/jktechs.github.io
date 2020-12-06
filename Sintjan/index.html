@@ -49,9 +49,21 @@ li a:hover:not(.active) {
   padding: 10px;
   text-align: center;
 }
+.dayItem{
+	background-color: #4CACFF;
+  text-align: center;
+}
 a{
 text-decoration:none;
   font-weight: bold;
+}
+.titel{
+
+  text-align: right;
+}
+.subject{
+
+  text-align: left;
 }
 </style>
 
@@ -65,7 +77,7 @@ text-decoration:none;
   <li><a href="?page=2">Instellingen</a></li>
   <li><a href="?page=3">Over</a></li>
 </ul>
-  <p class="block" id="header">Vandaag: </p>
+  <p class="block" id="header"> Temp </p>
 <script>
 let pag = new URLSearchParams(window.location.search).get('page');
 if(!pag)
@@ -74,18 +86,13 @@ let day = new URLSearchParams(window.location.search).get('day');
 if(!day)
 day = 0;
 document.getElementById("menubar").children[pag].children[0].className = "active";
-if(pag == 0){document.getElementById("header").innerText = "Huiswerk"} else {document.getElementById("header").innerHTML = "<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"}
+if(pag == 0){document.getElementById("header").innerText = "Huiswerk"} else if(pag == 1) {document.getElementById("header").innerHTML = "<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"}
 </script>
 <div style="padding:20px;background-color:#f0f0ff;height:600px;">
-  <p>Some text some text some text some text..</p>
-  <p>Some text some text some text some text..</p>
-  <p>Some text some text some text some text..</p>
-  <p>Some text some text some text some text..</p>
-  <p>Some text some text some text some text..</p>
-  <p>Some text some text some text some text..</p>
-  <p>Some text some text some text some text..</p>
-  <p>Some text some text some text some text..</p>
-  <p>Some text some text some text some text..</p>
+  <div class="dayItem">
+	<a class = "subject">NL</a>
+	<a class = "titel">titel</a>
+  </div>
 </div>
 
 </body>
