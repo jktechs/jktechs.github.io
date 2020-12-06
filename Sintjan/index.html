@@ -49,21 +49,15 @@ li a:hover:not(.active) {
   padding: 10px;
   text-align: center;
 }
-.dayItem{
-	background-color: #4CACFF;
-  text-align: center;
+a{text-decoration:none;font-weight: bold;}
+.LessonLine {
+  display: flex;
+  justify-content: space-between;
+  background-color: #4CACFF;
+  padding: 5px;
 }
-a{
-text-decoration:none;
-  font-weight: bold;
-}
-.titel{
-
-  text-align: right;
-}
-.subject{
-
-  text-align: left;
+.LessonItem{
+margin:5px;
 }
 </style>
 
@@ -88,12 +82,30 @@ day = 0;
 document.getElementById("menubar").children[pag].children[0].className = "active";
 if(pag == 0){document.getElementById("header").innerText = "Huiswerk"} else if(pag == 1) {document.getElementById("header").innerHTML = "<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"}
 </script>
-<div style="padding:20px;background-color:#f0f0ff;height:600px;">
-  <div class="dayItem">
-	<a class = "subject">NL</a>
-	<a class = "titel">titel</a>
+  <div style="padding:20px;background-color:#f0f0ff;height:600px;">
+  
+	<div class="LessonItem">
+      <div class="LessonLine" style="width:75%;margin:0 auto;">
+        <span>Nederlands</span>
+        <span>Huiswerk titel</span>
+      </div>
+	  <div class="LessonLine" style="width:75%;margin:0 auto;">
+        <span>[10:30-11:20]</span>
+        <span>hier staat meer uitleg over het huiswek</span>
+      </div>
+	</div>
+	
+	<div class="LessonItem">
+	  <div class="LessonLine" style="width:75%;margin:0 auto;">
+        <span>Nederlands</span>
+        <span>Huiswerk titel</span>
+      </div>
+	  <div class="LessonLine" style="width:75%;margin:0 auto;">
+        <span>[11:20-12:30]</span>
+        <span>hier staat meer uitleg over het huiswek</span>
+      </div>
+	</div>
+	
   </div>
-</div>
-
 </body>
 </html>
