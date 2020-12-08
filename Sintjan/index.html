@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <script>function curday(sp, off){
 today = new Date();
 today.setDate(today.getDate() + off);
@@ -61,13 +62,11 @@ margin:5px;
 }
 </style>
 
-<meta charset="UTF-8">
-
 </head>
 <body>
 <ul id="menubar">
-  <li><a href="?page=0">Huiswerk</a></li>
-  <li><a href="?page=1">Rooster</a></li>
+  <li><a href="?page=0">Rooster</a></li>
+  <li><a href="?page=1">Huiswerk</a></li>
   <li><a href="?page=2">Instellingen</a></li>
   <li><a href="?page=3">Over</a></li>
 </ul>
@@ -80,32 +79,33 @@ let day = new URLSearchParams(window.location.search).get('day');
 if(!day)
 day = 0;
 document.getElementById("menubar").children[pag].children[0].className = "active";
-if(pag == 0){document.getElementById("header").innerText = "Huiswerk"} else if(pag == 1) {document.getElementById("header").innerHTML = "<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"}
+if(pag == 1){document.getElementById("header").innerText = "Huiswerk"} else if(pag == 1) {document.getElementById("header").innerHTML = "<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"}
 </script>
-  <div style="padding:20px;background-color:#f0f0ff;height:600px;">
+  <div id="dataHolder" style="padding:20px;background-color:#f0f0ff;height:600px;"></div>
+  <script>
+  let lines = []
+  if(pag==0)
+  lines = ["Vak Naam","Huiswerk titel","[xx:xx-xx:xx]","hier staat meer uitleg over het huiswek"];
+  else
+  lines = ["Huiswerk titel","vak","[xx/xx/xxxx xx:xx-xx:xx]","uitleg"];
+  for(let k = 0;k<10;k++){
+  data = document.getElementById("dataHolder");
+  div = document.createElement('div');
+  data.appendChild(div);
+  div.className = "LessonItem"
   
-	<div class="LessonItem">
-      <div class="LessonLine" style="width:75%;margin:0 auto;">
-        <span>Nederlands</span>
-        <span>Huiswerk titel</span>
-      </div>
-	  <div class="LessonLine" style="width:75%;margin:0 auto;">
-        <span>[10:30-11:20]</span>
-        <span>hier staat meer uitleg over het huiswek</span>
-      </div>
-	</div>
-	
-	<div class="LessonItem">
-	  <div class="LessonLine" style="width:75%;margin:0 auto;">
-        <span>Nederlands</span>
-        <span>Huiswerk titel</span>
-      </div>
-	  <div class="LessonLine" style="width:75%;margin:0 auto;">
-        <span>[11:20-12:30]</span>
-        <span>hier staat meer uitleg over het huiswek</span>
-      </div>
-	</div>
-	
-  </div>
+  for(let i = 0;i<2;i++){
+	div2 = document.createElement('div');
+    div.appendChild(div2);
+    div2.className = "LessonLine";
+    div2.style = "width:75%;margin:0 auto;";
+	for(let j = 0;j<2;j++){
+	  span = document.createElement('span');
+      div2.appendChild(span);
+	  span.innerText = lines[j+i*2];
+    }
+  }
+  }
+  </script>
 </body>
 </html>
