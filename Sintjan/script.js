@@ -25,7 +25,7 @@ function Ready(){
 	} else if(pag == 0) {
 		document.getElementById("header").innerHTML = "<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"
 	} else if(pag == 2) {
-		document.getElementById("header").innerHTML = "Instellingen<img src="https://img.icons8.com/ios/96/000000/settings.png"/>"
+		document.getElementById("header").innerHTML = "Instellingen"
 	} else if(pag == 3) {
 		document.getElementById("header").innerHTML = "Over"
 	}
@@ -37,7 +37,7 @@ function Ready(){
 	else if(pag==2)
 		lines = ["Programma naam","Username:xxxxxxx","","Password:xxxxxxx",2];
 	else if(pag==3)
-		lines = ["Credits","","Programmatuur: Jannick Koppe, Mathijs Janssen, Dean Hollender","",1];
+		lines = ["Credits","","Programmatuur: Jannick Koppe, Mathijs Janssen, Dean Hollender","<a href='https://icons8.com/icon/364/settings'>Settings icon by Icons8</a><a href='https://icons8.com/icon/49602/grid'>Grid icon by Icons8</a><a href='https://icons8.com/icon/77/info'>Info icon by Icons8</a><a href='https://icons8.com/icon/RCh2z2b7aAVV/homework'>Homework icon by Icons8</a>",1];
 	for(let k = 0;k<lines[4];k++){
 		data = document.getElementById("dataHolder");
 		div = document.createElement('div');
@@ -51,7 +51,7 @@ function Ready(){
 			for(let j = 0;j<2;j++){
 				span = document.createElement('span');
 				div2.appendChild(span);
-				span.innerText = lines[j+i*2];
+				span.innerHTML = lines[j+i*2];
 			}
 		}
 	}

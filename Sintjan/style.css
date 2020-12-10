@@ -25,7 +25,10 @@ li a {
 	background-color: #4CAF50;
 }
 li a:hover:not(.active) {
-	background-color: #111;
+	background-color: #777777;
+}
+.icon{
+	filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(334deg) brightness(107%) contrast(101%);
 }
 .block{
 	background-color: #4CACFF;
