@@ -24,13 +24,21 @@ function Ready(){
 		document.getElementById("header").innerText = "Huiswerk"
 	} else if(pag == 0) {
 		document.getElementById("header").innerHTML = "<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"
+	} else if(pag == 2) {
+		document.getElementById("header").innerHTML = "Instellingen<img src="https://img.icons8.com/ios/96/000000/settings.png"/>"
+	} else if(pag == 3) {
+		document.getElementById("header").innerHTML = "Over"
 	}
 	let lines = []
 	if(pag==0)
-		lines = ["Vak Naam","Huiswerk titel","[xx:xx-xx:xx]","hier staat meer uitleg over het huiswek"];
-	else
-		lines = ["Huiswerk titel","vak","[xx/xx/xxxx xx:xx-xx:xx]","uitleg"];
-	for(let k = 0;k<10;k++){
+		lines = ["Vak Naam","Huiswerk titel","[xx:xx-xx:xx]","hier staat meer uitleg over het huiswek",10];
+	else if(pag==1)
+		lines = ["Huiswerk titel","vak","[xx/xx/xxxx xx:xx-xx:xx]","uitleg",10];
+	else if(pag==2)
+		lines = ["Programma naam","Username:xxxxxxx","","Password:xxxxxxx",2];
+	else if(pag==3)
+		lines = ["Credits","","Programmatuur: Jannick Koppe, Mathijs Janssen, Dean Hollender","",1];
+	for(let k = 0;k<lines[4];k++){
 		data = document.getElementById("dataHolder");
 		div = document.createElement('div');
 		data.appendChild(div);
