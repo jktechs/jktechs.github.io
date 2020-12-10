@@ -1,0 +1,48 @@
+body {
+	margin:0
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+li {
+	float: left;
+}
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+.active, .active:hover{
+	background-color: #4CAF50;
+}
+li a:hover:not(.active) {
+	background-color: #111;
+}
+.block{
+	background-color: #4CACFF;
+	margin: 0px;
+	padding: 10px;
+	text-align: center;
+}
+a{
+	text-decoration:none;
+	font-weight: bold;
+}
+.LessonLine {
+	display: flex;
+	justify-content: space-between;
+	background-color: #4CACFF;
+	padding: 5px;
+}
+.LessonItem{
+	margin:5px;
+}
