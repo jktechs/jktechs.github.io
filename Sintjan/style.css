@@ -18,7 +18,7 @@ li a {
 	display: block;
 	color: white;
 	text-align: center;
-	padding: 14px 16px;
+	padding: 2vh 2vh;
 	text-decoration: none;
 }
 .active, .active:hover{
@@ -29,6 +29,7 @@ li a:hover:not(.active) {
 }
 .icon{
 	filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(334deg) brightness(107%) contrast(101%);
+	width:8vh;
 }
 .block{
 	margin: 0px;
@@ -61,4 +62,7 @@ a{
 #header{
 	background-color: #333;
 	color: #FFFFFF;
+}
+.image{
+	width:8vh;
 }

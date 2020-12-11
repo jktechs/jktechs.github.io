@@ -22,7 +22,7 @@ function Ready(){
 	}
 	logo = "<img style='width:20vh;padding:0px 5vw 0px 5vw;' src='logosintjan.svg' alt='Logo Sint-Janscollege'>";
 	if(pag == 1){
-		document.getElementById("header").innerText = logo+"Huiswerk"
+		document.getElementById("header").innerHTML = logo+"Huiswerk"
 	} else if(pag == 0) {
 		document.getElementById("header").innerHTML = logo+"<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"
 	} else if(pag == 2) {
