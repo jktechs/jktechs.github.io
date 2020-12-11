@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style.css">
+		<script src="script.js"></script>
+	</head>
+	<body>
+	<script>let pag = new URLSearchParams(window.location.search).get('page');
+if(!pag)
+pag = 0;
+let day = new URLSearchParams(window.location.search).get('day');
+if(!day)
+day = 0;
+function curday(sp, off){
+	today = new Date();
+	today.setDate(today.getDate() + off);
+	var dd = today.getDate();
+	var mm = today.getMonth()+1;
+	var yyyy = today.getFullYear();
+
+	if(dd<10) dd='0'+dd;
+	if(mm<10) mm='0'+mm;
+	return (mm+sp+dd+sp+yyyy);
+};
+function Ready(){
+	document.getElementById("menubar").children[pag].children[0].className = "active";
+	for(let i = 0;i<document.getElementById("menubar").childElementCount;i++){
+		document.getElementById("menubar").children[i].children[0].href = "?page="+i+"&day="+day;
+	}
+	if(pag == 1){
+		document.getElementById("header").innerText = "Huiswerk"
+	} else if(pag == 0) {
+		document.getElementById("header").innerHTML = "<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"
+	} else if(pag == 2) {
+		document.getElementById("header").innerHTML = "Instellingen"
+	} else if(pag == 3) {
+		document.getElementById("header").innerHTML = "Over"
+	}
+	let lines = []
+	if(pag==0)
+		lines = ["Vak Naam","Huiswerk titel","[xx:xx-xx:xx]","hier staat meer uitleg over het huiswek",10];
+	else if(pag==1)
+		lines = ["Huiswerk titel","vak","[xx/xx/xxxx xx:xx-xx:xx]","uitleg",10];
+	else if(pag==2)
+		lines = ["Programma naam","Username:xxxxxxx","","Password:xxxxxxx",2];
+	else if(pag==3)
+		lines = ["Credits","","Programmatuur: Jannick Koppe, Mathijs Janssen, Dean Hollender","<a href='https://icons8.com/icon/364/settings'>Settings icon by Icons8</a><a href='https://icons8.com/icon/49602/grid'>Grid icon by Icons8</a><a href='https://icons8.com/icon/77/info'>Info icon by Icons8</a><a href='https://icons8.com/icon/RCh2z2b7aAVV/homework'>Homework icon by Icons8</a>",1];
+	for(let k = 0;k<lines[4];k++){
+		data = document.getElementById("dataHolder");
+		div = document.createElement('div');
+		data.appendChild(div);
+		div.className = "LessonItem"
+		for(let i = 0;i<2;i++){
+			div2 = document.createElement('div');
+			div.appendChild(div2);
+			div2.className = "LessonLine";
+			div2.style = "width:75%;margin:0 auto;";
+			for(let j = 0;j<2;j++){
+				span = document.createElement('span');
+				div2.appendChild(span);
+				span.innerHTML = lines[j+i*2];
+			}
+		}
+	}
+}</script>
+<style type="text/css">
+      body {
+	margin:0
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+li {
+	float: left;
+}
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+.active, .active:hover{
+	background-color: #4CAF50;
+}
+li a:hover:not(.active) {
+	background-color: #777777;
+}
+.icon{
+	filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(334deg) brightness(107%) contrast(101%);
+}
+.block{
+	background-color: #4CACFF;
+	margin: 0px;
+	padding: 10px;
+	text-align: center;
+}
+a{
+	text-decoration:none;
+	font-weight: bold;
+}
+.LessonLine {
+	display: flex;
+	justify-content: space-between;
+	background-color: #4CACFF;
+	padding: 5px;
+}
+.LessonItem{
+	margin:5px;
+}
+    </style>
+		<ul id="menubar">
+			<li><a class="icon" href="?page=0"><img src="https://img.icons8.com/wired/64/000000/grid.png"        style="width:8vh"/></a></li>
+			<li><a class="icon" href="?page=1"><img src="https://img.icons8.com/windows/32/000000/homework.png"  style="width:8vh"/></a></li>
+			<li><a class="icon" href="?page=2"><img src="https://img.icons8.com/ios/60/000000/settings.png"      style="width:8vh"/></a></li>
+			<li><a class="icon" href="?page=3"><img src="https://img.icons8.com/ios/64/000000/info--v1.png"      style="width:8vh"/></a></li>
+		</ul>
+		<p class="block" id="header"> Temp </p>
+		<div id="dataHolder" style="padding:20px;background-color:#f0f0ff;height:600px;">
+		</div>
+		<script>
+			Ready();
+		</script>
+	</body>
+</html>
