@@ -47,7 +47,7 @@ function Ready(){
 			div2 = document.createElement('div');
 			div.appendChild(div2);
 			div2.className = "LessonLine";
-			div2.style = "width:75%;margin:0 auto;";
+			div2.style = "width:75%;height:12%;margin:0 auto;";
 			for(let j = 0;j<2;j++){
 				span = document.createElement('span');
 				div2.appendChild(span);
