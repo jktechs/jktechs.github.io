@@ -20,14 +20,15 @@ function Ready(){
 	for(let i = 0;i<document.getElementById("menubar").childElementCount;i++){
 		document.getElementById("menubar").children[i].children[0].href = "?page="+i+"&day="+day;
 	}
+	logo = "<img style='width:20vh;padding:0px 5vw 0px 5vw;' src='logosintjan.svg' alt='Logo Sint-Janscollege'>";
 	if(pag == 1){
-		document.getElementById("header").innerText = "Huiswerk"
+		document.getElementById("header").innerText = logo+"Huiswerk"
 	} else if(pag == 0) {
-		document.getElementById("header").innerHTML = "<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"
+		document.getElementById("header").innerHTML = logo+"<a href='?day="+(parseInt(day)-1)+"&page="+pag+"'> < </a>Datum: "+curday("/",parseInt(day))+"<a href='?day="+(parseInt(day)+1)+"&page="+pag+"'> > </a>"
 	} else if(pag == 2) {
-		document.getElementById("header").innerHTML = "Instellingen"
+		document.getElementById("header").innerHTML = logo+"Instellingen"
 	} else if(pag == 3) {
-		document.getElementById("header").innerHTML = "Over"
+		document.getElementById("header").innerHTML = logo+"Over"
 	}
 	let lines = []
 	if(pag==0)
@@ -37,7 +38,7 @@ function Ready(){
 	else if(pag==2)
 		lines = ["Programma naam","Username:xxxxxxx","","Password:xxxxxxx",2];
 	else if(pag==3)
-		lines = ["Credits","","Programmatuur: Jannick Koppe, Mathijs Janssen, Dean Hollender","<a href='https://icons8.com/icon/364/settings'>Settings icon by Icons8</a><a href='https://icons8.com/icon/49602/grid'>Grid icon by Icons8</a><a href='https://icons8.com/icon/77/info'>Info icon by Icons8</a><a href='https://icons8.com/icon/RCh2z2b7aAVV/homework'>Homework icon by Icons8</a>",1];
+		lines = ["Credits","","Programmatuur: Jannick Koppe, Mathijs Janssen, Dean Hollender","<a href='https://icons8.com/icon/364/settings'>Settings icon by Icons8</a><br><a href='https://icons8.com/icon/49602/grid'>Grid icon by Icons8</a><br><a href='https://icons8.com/icon/77/info'>Info icon by Icons8</a><br><a href='https://icons8.com/icon/RCh2z2b7aAVV/homework'>Homework icon by Icons8</a>",1];
 	for(let k = 0;k<lines[4];k++){
 		data = document.getElementById("dataHolder");
 		div = document.createElement('div');

@@ -31,14 +31,17 @@ li a:hover:not(.active) {
 	filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(334deg) brightness(107%) contrast(101%);
 }
 .block{
-	background-color: #4CACFF;
 	margin: 0px;
-	padding: 10px;
-	text-align: center;
+	padding: 0px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	font-size: 3vh;
 }
 a{
 	text-decoration:none;
 	font-weight: bold;
+	color: #FFFFFF;
 }
 .LessonLine {
 	display: flex;
@@ -48,4 +51,14 @@ a{
 }
 .LessonItem{
 	margin:5px;
+	font-size:3vh;
+}
+#dataHolder{
+	padding:18vh 0px 0px 0px;
+	background-color:#f0f0ff;
+	height:150vh;
+}
+#header{
+	background-color: #333;
+	color: #FFFFFF;
 }
