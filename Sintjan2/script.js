@@ -43,11 +43,11 @@ function Ready(){
 		data = document.getElementById("dataHolder");
 		div = document.createElement('div');
 		data.appendChild(div);
-		div.className = "LessonItem"
+		div.className = "LessonItem w3-cell-row"
 		for(let i = 0;i<2;i++){
 			div2 = document.createElement('div');
 			div.appendChild(div2);
-			div2.className = "LessonLine";
+			div2.className = "LessonLine w3-cell";
 			div2.style = "width:75%;height:12%;margin:0 auto;";
 			for(let j = 0;j<2;j++){
 				span = document.createElement('span');
@@ -55,5 +55,7 @@ function Ready(){
 				span.innerHTML = lines[j+i*2];
 			}
 		}
+		hr = document.createElement('hr');
+		div.appendChild(hr);
 	}
 }

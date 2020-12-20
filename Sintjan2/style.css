@@ -6,7 +6,6 @@ ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #333;
 	position: fixed;
 	bottom: 0;
 	width: 100%;
@@ -16,19 +15,11 @@ li {
 }
 li a {
 	display: block;
-	color: white;
 	text-align: center;
 	padding: 2vh 2vh;
 	text-decoration: none;
 }
-.active, .active:hover{
-	background-color: #4CAF50;
-}
-li a:hover:not(.active) {
-	background-color: #777777;
-}
 .icon{
-	filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(334deg) brightness(107%) contrast(101%);
 	width:8vh;
 }
 .block{
@@ -42,12 +33,10 @@ li a:hover:not(.active) {
 a{
 	text-decoration:none;
 	font-weight: bold;
-	color: #FFFFFF;
 }
 .LessonLine {
 	display: flex;
 	justify-content: space-between;
-	background-color: #4CACFF;
 	padding: 5px;
 }
 .LessonItem{
@@ -56,12 +45,7 @@ a{
 }
 #dataHolder{
 	padding:18vh 0px 0px 0px;
-	background-color:#f0f0ff;
 	height:150vh;
-}
-#header{
-	background-color: #333;
-	color: #FFFFFF;
 }
 .image{
 	width:8vh;
