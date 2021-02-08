@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<title>Sint-Janscollege</title>
+		<script src="js/sintjanapp.js"></script>
+	</head>
+	<body onload="onLoad()">
+		<input id="email" value="email">
+		<input id="password" value="password">
+		<button onCLick="login();">login</button>
+		<p>Het punt een <input id="waarde" type="number" step=".01" value=5,5 onChange="getGrade();"> staan na een toets die <input id="weging" type="number" step=".01" value=1 onchange="getGrade();"> keer metelt</input></p>
+		<p id="grid"></p>
+		<p id="answer"></p>
+	</body>
+</html>
