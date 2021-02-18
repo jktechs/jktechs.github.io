@@ -1,3 +1,4 @@
+new URLSearchParams(window.location.search).forEach(console.log)
 lvoId = "d091c475-43f3-494f-8b1a-84946a5c2142";
 lastTime = 0;
 accesCode = "";
