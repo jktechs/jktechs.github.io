@@ -1,43 +1,52 @@
 let tmp = {}
+var img = document.getElementById("theImg");
+var cnvs = document.getElementById("myCanvas");
+var i1 = document.getElementById("i1");
+var i2 = document.getElementById("i2");
+var flr = document.getElementById("floor");
+var ctx = cnvs.getContext("2d");
+var path = [];
 function draw() {
-    var img = document.getElementById("theImg");
-    var cnvs = document.getElementById("myCanvas");
-    var i1 = document.getElementById("i1");
-    var i2 = document.getElementById("i2");
-    var flr = document.getElementById("floor");
-
-    var ctx = cnvs.getContext("2d");
 
     ctx.lineWidth = 10;
     ctx.strokeStyle = '#00ff00';
 
     for (x in tmp.Points) {
+        if(tmp.Points[x][2] == flr.value || tmp.Points[x][2] == 3)
         circle(tmp.Points[x][0], tmp.Points[x][1], ctx);
     }
     for (x in tmp.Connections) {
+        if(tmp.Points[tmp.Connections[x][0]][2] != flr.value && tmp.Points[tmp.Connections[x][0]][2] != 3) continue;
+        if(tmp.Points[tmp.Connections[x][1]][2] != flr.value && tmp.Points[tmp.Connections[x][1]][2] != 3) continue;
         line(tmp.Points[tmp.Connections[x][0]][0], tmp.Points[tmp.Connections[x][0]][1], tmp.Points[tmp.Connections[x][1]][0], tmp.Points[tmp.Connections[x][1]][1], ctx);
     }
     ctx.strokeStyle = '#ff0000';
     for (x in tmp.Groups) {
-        //text(x, tmp.Points[tmp.Groups[x][0]][0], tmp.Points[tmp.Groups[x][0]][1], ctx);
+        
+        if(tmp.Points[tmp.Groups[x][0]][2] == flr.value || tmp.Points[tmp.Groups[x][0]][2] == 3) {
+        text(x, tmp.Points[tmp.Groups[x][0]][0], tmp.Points[tmp.Groups[x][0]][1], ctx);
         circle(tmp.Points[tmp.Groups[x][0]][0], tmp.Points[tmp.Groups[x][0]][1], ctx);
+        }
     }
     ctx.strokeStyle = '#0000ff';
-    let path = find(tmp.Groups[i1.value], tmp.Groups[i2.value], tmp.Connections, tmp.Points.length, tmp.Points)
-    console.log(path)
     let last = path[0]
     circle(tmp.Points[last][0], tmp.Points[last][1], ctx);
     for(let p = 1;p<path.length;p++){
         console.log(path[p]+" "+last)
+        if(tmp.Points[path[p]][2] == flr.value || tmp.Points[path[p]][2] == 3)
         circle(tmp.Points[path[p]][0], tmp.Points[path[p]][1], ctx);
+        if(tmp.Points[tmp.Connections[path[p]][0]][2] != flr.value && tmp.Points[tmp.Connections[path[p]][0]][2] != 3 && tmp.Points[tmp.Connections[path[p]][1]][2] != flr.value && tmp.Points[tmp.Connections[path[p]][1]][2] != 3)
         line(tmp.Points[path[p]][0], tmp.Points[path[p]][1], tmp.Points[last][0], tmp.Points[last][1], ctx);
         last = path[p];
     }
 }
 function updateMap(){
-    var flr = document.getElementById("floor");
-    var img = document.getElementById("theImg");
     img.src = "/navigator/P"+(flr.value+1)+".PNG";
+    draw();
+}
+function calcPath(){
+    path = find(tmp.Groups[i1.value], tmp.Groups[i2.value], tmp.Connections, tmp.Points.length, tmp.Points);
+    draw();
 }
 function circle(x, y, c) {
     c.beginPath();
