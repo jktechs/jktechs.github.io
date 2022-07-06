@@ -1,5 +1,8 @@
 let tmp = {}
-var img = document.getElementById("theImg");
+var img;
+var img1 = document.getElementById("img1");
+var img2 = document.getElementById("img2");
+var img3 = document.getElementById("img3");
 var cnvs = document.getElementById("myCanvas");
 var i1 = document.getElementById("i1");
 var i2 = document.getElementById("i2");
@@ -7,41 +10,53 @@ var flr = document.getElementById("floor");
 var ctx = cnvs.getContext("2d");
 var path = [];
 function draw() {
-
+    ctx.clearRect(0, 0, cnvs.width, cnvs.height);
     ctx.lineWidth = 10;
     ctx.strokeStyle = '#00ff00';
 
     for (x in tmp.Points) {
-        if(tmp.Points[x][2] == flr.value || tmp.Points[x][2] == 3)
+        if(checkPoint(x))
         circle(tmp.Points[x][0], tmp.Points[x][1], ctx);
     }
     for (x in tmp.Connections) {
-        if(tmp.Points[tmp.Connections[x][0]][2] != flr.value && tmp.Points[tmp.Connections[x][0]][2] != 3) continue;
-        if(tmp.Points[tmp.Connections[x][1]][2] != flr.value && tmp.Points[tmp.Connections[x][1]][2] != 3) continue;
+        if(!checkPoint(tmp.Connections[x][0]) || !checkPoint(tmp.Connections[x][1])) continue;
         line(tmp.Points[tmp.Connections[x][0]][0], tmp.Points[tmp.Connections[x][0]][1], tmp.Points[tmp.Connections[x][1]][0], tmp.Points[tmp.Connections[x][1]][1], ctx);
     }
     ctx.strokeStyle = '#ff0000';
     for (x in tmp.Groups) {
-        
-        if(tmp.Points[tmp.Groups[x][0]][2] == flr.value || tmp.Points[tmp.Groups[x][0]][2] == 3) {
+        if(checkPoint(tmp.Groups[x][0])) {
         text(x, tmp.Points[tmp.Groups[x][0]][0], tmp.Points[tmp.Groups[x][0]][1], ctx);
         circle(tmp.Points[tmp.Groups[x][0]][0], tmp.Points[tmp.Groups[x][0]][1], ctx);
         }
     }
     ctx.strokeStyle = '#0000ff';
     let last = path[0]
+    if(checkPoint(path[0]))
     circle(tmp.Points[last][0], tmp.Points[last][1], ctx);
     for(let p = 1;p<path.length;p++){
         console.log(path[p]+" "+last)
-        if(tmp.Points[path[p]][2] == flr.value || tmp.Points[path[p]][2] == 3)
-        circle(tmp.Points[path[p]][0], tmp.Points[path[p]][1], ctx);
-        if(tmp.Points[tmp.Connections[path[p]][0]][2] != flr.value && tmp.Points[tmp.Connections[path[p]][0]][2] != 3 && tmp.Points[tmp.Connections[path[p]][1]][2] != flr.value && tmp.Points[tmp.Connections[path[p]][1]][2] != 3)
-        line(tmp.Points[path[p]][0], tmp.Points[path[p]][1], tmp.Points[last][0], tmp.Points[last][1], ctx);
+        if(checkPoint(path[p])){
+            circle(tmp.Points[path[p]][0], tmp.Points[path[p]][1], ctx);
+            if(checkPoint(last))
+            line(tmp.Points[path[p]][0], tmp.Points[path[p]][1], tmp.Points[last][0], tmp.Points[last][1], ctx);
+        }
         last = path[p];
     }
 }
 function updateMap(){
-    img.src = "/navigator/P"+(parseInt(flr.value)+1)+".PNG";
+    if(flr.value == 0) {
+        img1.style.display = "block";
+        img2.style.display = "none";
+        img3.style.display = "none";
+    } else if(flr.value == 1) {
+        img1.style.display = "none";
+        img2.style.display = "block";
+        img3.style.display = "none";
+    } else {
+        img1.style.display = "none";
+        img2.style.display = "none";
+        img3.style.display = "block";
+    }
     draw();
 }
 function calcPath(){
@@ -69,10 +84,10 @@ var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
             tmp = JSON.parse(xmlHttp.responseText);
-            draw();
+            calcPath();
         }
     }
-    xmlHttp.open("GET", "https://raw.githubusercontent.com/jktechs/jktechs.github.io/master/schoolLayout.json", true); // true for asynchronous 
+    xmlHttp.open("GET", "https://raw.githubusercontent.com/jktechs/jktechs.github.io/master/schoolLayout.json", true);
     xmlHttp.send(null);
 function find(beginG, endG, Connections, pointCount, positions) {
     let openSet = [beginG[0]];
@@ -135,4 +150,7 @@ function h(p, end, pos) {
 }
 function d(p, c, pos) {
     return Math.sqrt((pos[p][0] - pos[c][0]) * (pos[p][0] - pos[c][0]) + (pos[p][1] - pos[c][1]) * (pos[p][1] - pos[c][1]));
+}
+function checkPoint(p){
+    return tmp.Points[p][2] == flr.value || tmp.Points[p][2] == 3
 }
