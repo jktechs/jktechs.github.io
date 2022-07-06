@@ -41,7 +41,7 @@ function draw() {
     }
 }
 function updateMap(){
-    img.src = "/navigator/P"+(flr.value+1)+".PNG";
+    img.src = "/navigator/P"+(parseInt(flr.value)+1)+".PNG";
     draw();
 }
 function calcPath(){
