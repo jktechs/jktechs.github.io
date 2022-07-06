@@ -2,6 +2,8 @@ let tmp = {}//{"Connections":[[51,52],[6,51],[5,6],[7,5],[49,5],[50,49],[48,50],
 function draw() {
     var img = document.getElementById("theImg");
     var cnvs = document.getElementById("myCanvas");
+    var i1 = document.getElementById("i1");
+    var i2 = document.getElementById("i2");
 
     var ctx = cnvs.getContext("2d");
 
@@ -20,7 +22,7 @@ function draw() {
         circle(tmp.Points[tmp.Groups[x][0]][0], tmp.Points[tmp.Groups[x][0]][1], ctx);
     }
     ctx.strokeStyle = '#0000ff';
-    let path = find(tmp.Groups["B005"], tmp.Groups["A006"], tmp.Connections, tmp.Points.length, tmp.Points)
+    let path = find(tmp.Groups[i1.value], tmp.Groups[i2.value], tmp.Connections, tmp.Points.length, tmp.Points)
     console.log(path)
     let last = path[0]
     circle(tmp.Points[last][0], tmp.Points[last][1], ctx);
