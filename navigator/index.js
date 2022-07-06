@@ -15,18 +15,18 @@ function draw() {
     ctx.strokeStyle = '#00ff00';
 
     for (x in tmp.Points) {
-        if(checkPoint(x))
-        circle(tmp.Points[x][0], tmp.Points[x][1], ctx);
+        //if(checkPoint(x))
+        //circle(tmp.Points[x][0], tmp.Points[x][1], ctx);
     }
     for (x in tmp.Connections) {
-        if(!checkPoint(tmp.Connections[x][0]) || !checkPoint(tmp.Connections[x][1])) continue;
-        line(tmp.Points[tmp.Connections[x][0]][0], tmp.Points[tmp.Connections[x][0]][1], tmp.Points[tmp.Connections[x][1]][0], tmp.Points[tmp.Connections[x][1]][1], ctx);
+        //if(!checkPoint(tmp.Connections[x][0]) || !checkPoint(tmp.Connections[x][1])) continue;
+        //line(tmp.Points[tmp.Connections[x][0]][0], tmp.Points[tmp.Connections[x][0]][1], tmp.Points[tmp.Connections[x][1]][0], tmp.Points[tmp.Connections[x][1]][1], ctx);
     }
     ctx.strokeStyle = '#ff0000';
     for (x in tmp.Groups) {
         if(checkPoint(tmp.Groups[x][0])) {
-        text(x, tmp.Points[tmp.Groups[x][0]][0], tmp.Points[tmp.Groups[x][0]][1], ctx);
-        circle(tmp.Points[tmp.Groups[x][0]][0], tmp.Points[tmp.Groups[x][0]][1], ctx);
+        //text(x, tmp.Points[tmp.Groups[x][0]][0], tmp.Points[tmp.Groups[x][0]][1], ctx);
+        //circle(tmp.Points[tmp.Groups[x][0]][0], tmp.Points[tmp.Groups[x][0]][1], ctx);
         }
     }
     ctx.strokeStyle = '#0000ff';
