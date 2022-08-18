@@ -36,14 +36,14 @@
                 <div style="display:block"><a class="data">Name:</a><input id="name"></div>
                 <div style="display:block"><a class="data">Prefix:</a><input id="pre"></div>
                 <div style="display:block"><a class="data">dvd:</a><input id="dvd" type="checkbox"></div>
-                <button class="btn" onclick="changeE();">Change</button>
-                <button class="btn" onclick="addE();">Add</button>
-                <button class="btn" onclick="remE();">Remove</button>
-                <button class="btn" onclick="selectId(1,true);">Next</button>
+                <button onclick="changeE();">Change</button>
+                <button onclick="addE();">Add</button>
+                <button onclick="remE();">Remove</button>
+                <button onclick="selectId(1,true);">Next</button>
             </div>
             <div id="sort">
                 <div style="display:block">
-                    <input id="enName" type="checkbox" onchange="updateList();">
+                    <input id="enName" type="checkbox" onchange="updateList();" checked>
                     <a class="data">Name:</a>
                     <input id="sortName" onchange="updateList();">
                 </div>
@@ -51,6 +51,11 @@
                     <input id="enDvd" type="checkbox" onchange="updateList();">
                     <a class="data">dvd:</a>
                     <input id="sortDvd" type="checkbox" onchange="updateList();">
+                </div>
+                <div>
+                    <a class="data">auto-save:</a>
+                    <input id="auto-save" type="checkbox">
+                    <p id="autoSaveTime"></p>
                 </div>
             </div> 
         </div>   

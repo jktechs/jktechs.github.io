@@ -21,12 +21,28 @@ addEventListener('DOMContentLoaded', () => {
   file = storage.ref('movies.json');
   id = -1;
   getString();
+  setTimeout(checkForUpdates);
 });
+var lastV = "";
+var lastT = 0;
+function checkForUpdates(){
+  let now = Date.now()/1000 % 60;
+  document.getElementById("autoSaveTime").innerHTML = now;
+  if((document.getElementById("auto-save").checked && now-lastT) < 0){
+    sendString();
+    console.log("saved");
+  }
+  if(document.getElementById("enName").checked && document.getElementById("sortName").value !== lastV)
+  updateList();
+  lastV = document.getElementById("sortName").value;
+  lastT = now;
+  setTimeout(checkForUpdates, 100);
+}
 function updateList(){
   obj.sort((a, b)=>a.name.localeCompare(b.name));
   var newHTML = [];
   for (var i = 0; i < obj.length; i++) {
-    if(document.getElementById("enName").checked && !obj[i].name.toLowerCase().includes(document.getElementById("sortName").value.toLowerCase())) continue;
+    if(document.getElementById("enName").checked && !(obj[i].pre.toLowerCase()+" "+obj[i].name.toLowerCase()).includes(document.getElementById("sortName").value.toLowerCase())) continue;
     if(document.getElementById("enDvd").checked && !obj[i].dvd != document.getElementById("sortDvd").checked) continue;
     newHTML.push('<p class="item" id="num'+i+'" onclick="selectId('+i+');">' + (i+1).toString() + ' ' + obj[i].pre + " " + obj[i].name + '</p>');
   }
