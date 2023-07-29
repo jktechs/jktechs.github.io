@@ -1,0 +1,22 @@
+body {
+  font-family: "Inter", serif;
+  font-size: 15px;
+  background-color: #1e1e1e;
+  color: #dadada;
+}
+input[type="checkbox"] {
+  accent-color: yellow;
+  filter: brightness(78.04%) invert(1);
+}
+table,
+th,
+td {
+  border: 1px solid;
+  border-collapse: collapse;
+  border-color: #383838;
+}
+pre[class*="language-"] {
+  border: none;
+  box-shadow: none;
+  background: inherit;
+}
