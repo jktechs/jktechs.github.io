@@ -10,12 +10,59 @@
   <script src="cmark-gfm.js"></script>
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs'
-    document.body.addEventListener("done",(e) => {mermaid.initialize({ startOnLoad: true, theme: 'dark' })},false);
+    const mark = /==([^=]*)==/gm
+    const marksubst = `<mark>$1</mark>`
+    const boxu = / \[( )\] /gim
+    const boxusubst = ` <input onClick=\"return false;\" type=\"checkbox\">`
+    const boxc = / \[(x)\] (.*)/gim
+    const boxcsubst = ` <input onClick=\"return false;\" type=\"checkbox\" checked>~~$2~~`
+    const link = /\[\[(.*)\]\]/gm
+    const linksubst = `<a href="index.html?$1" id="$1">$1</a>`
+    var filename = decodeURI(window.location.search.replace('?', ''))
+    const done = new Event('done')
+    if (filename == '') filename = 'Main'
+    mermaid.initialize({ theme: 'dark' })
+    fetch(
+      'https://raw.githubusercontent.com/jktechs/pxt-jannick/master/.obsidian/snippets/theme.css'
+    )
+      .then(x => x.text())
+      .then(x => (document.getElementById('theme').innerHTML = x))
+
+    console.log('fetching')
+    fetch(
+      'https://raw.githubusercontent.com/jktechs/pxt-jannick/master/' +
+        filename +
+        '.md'
+    )
+      .then(x => x.text())
+      .then(x => {
+        console.log('fetched')
+        document.getElementById('markdown').innerHTML = CmarkGFM.convert(
+          ('# ' + filename + '\n' + x)
+            .replace(mark, marksubst)
+            .replace(boxu, boxusubst)
+            .replace(boxc, boxcsubst)
+            .replace(link, linksubst)
+        )
+        console.log('parsed')
+        Prism.highlightAll()
+        console.log('highlight')
+        for (let i of document.getElementsByTagName('pre')) {
+          if (i.className == 'language-mermaid') {
+            i.className = 'mermaid'
+            i.innerHTML = i.children[0].innerHTML
+          }
+        }
+        console.log('wait')
+        setTimeout(() => {
+          console.log('init')
+          console.log(mermaid)
+          mermaid.run()
+        }, 1)
+      })
   </script>
 </head>
 <body>
-  <div id="markdown">
-    <script src="index.js"></script>
-  </div>
+  <div id="markdown"></div>
   <script src="prism.js"></script>
 </body>
