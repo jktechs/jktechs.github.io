@@ -10,7 +10,7 @@
   <script src="cmark-gfm.js"></script>
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs'
-    elem.addEventListener("done",(e) => {mermaid.initialize({ startOnLoad: true, theme: 'dark' })},false);
+    document.body.addEventListener("done",(e) => {mermaid.initialize({ startOnLoad: true, theme: 'dark' })},false);
   </script>
 </head>
 <body>
