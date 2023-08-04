@@ -7,7 +7,7 @@ const boxcsubst = ` <input onClick=\"return false;\" type=\"checkbox\" checked>~
 const link = /\[\[(.*)\]\]/gm;
 const linksubst = `<a href="index.html?$1" id="$1">$1</a>`;
 var filename = decodeURI(window.location.search.replace("?", ""));
-var done = false;
+const done = new Event("done");
 if (filename == "") filename = "Main";
 fetch(
   "https://raw.githubusercontent.com/jktechs/pxt-jannick/master/.obsidian/snippets/theme.css"
@@ -36,7 +36,7 @@ fetch(
         i.innerHTML = i.children[0].innerHTML;
       }
     }
-    done = true;
+    document.body.dispatchEvent(done);
     //mermaid.initialize({ startOnLoad: true });
     //for (const a of document.getElementsByTagName("a")) {
     //  console.log(a.id);
